@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map with no controls</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+    /* Going for more of a desktop layout here just for lessons. Google's own docs use more of a mobile layout. */
+      html, body {
+        background: gainsboro;
+      }
+      #map {
+        width:800px;
+        height: 600px;
+        margin:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        function initMap(){
+        /* To get Coords, goto Google Maps, find your location, right-click, and get Lat, Long */
+        
+        var mapOptions = {
+          center: new google.maps.LatLng(49.30076, -123.148597),
+          zoom: 15,/* can go from 0 - 21 (depending on the location. Higher population areas can get more resolution*/
+          mapTypeId: google.maps.MapTypeId.HYBRID, /* ROADMAP, HYBRID, TERRAIN, SATELLITE*/
+          zoomControl:false
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions)
+        };
+    </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script> -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm9vBHasbRw4NW9SSFFeEGVNR1LTNJ2fI&callback=initMap"></script>
+  </body>
+</html>

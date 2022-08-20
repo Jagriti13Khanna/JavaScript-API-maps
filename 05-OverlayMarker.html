@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map with an Overlay Marker</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+    /* Going for more of a desktop layout here just for lessons. Google's own docs use more of a mobile layout. */
+      html, body {
+        background: gainsboro;
+      }
+      #map {
+        width:800px;
+        height: 600px;
+        margin:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="javascript:gotoDelhi()">Delhi</a> |
+      <a href="javascript:gotoCalgary()"> Calgary</a>
+    </div>
+    <div id="map"></div>
+    <script>
+        
+        function gotoDelhi(){
+        /* To get Coords, goto Google Maps, find your location, right-click, and get Lat, Long */
+        
+            var mapOptions = {
+            center: new google.maps.LatLng(28.650866549358167, 77.23336699293662),
+            zoom: 15,/* can go from 0 - 21 (depending on the location. Higher population areas can get more resolution*/
+            mapTypeId: google.maps.MapTypeId.HYBRID, /* ROADMAP, HYBRID, TERRAIN, SATELLITE*/
+            zoomControl:false
+            };
+        
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            var redFortMarker = new google.maps.Marker({
+                position:  new google.maps.LatLng(28.65636630553727, 77.24105248431965),
+                map: map,
+                title: "Red Fort",
+                icon: "icons/mapiconscollection-markers/historicalquarter.png"
+            });
+
+            var masjidMarker = new google.maps.Marker({
+                position:  new google.maps.LatLng(28.656906933767043, 77.22262006897803),
+                map: map,
+                title: "Fatehpur Masjid",
+                icon: "icons/mapiconscollection-markers/mosquee.png"
+            });
+        };       
+
+    </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=gotoCalgary" async defer></script> -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm9vBHasbRw4NW9SSFFeEGVNR1LTNJ2fI&callback=gotoDelhi"></script>
+  </body>
+</html>

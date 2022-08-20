@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+    /* Going for more of a desktop layout here just for lessons. Google's own docs use more of a mobile layout. */
+      html, body {
+        background: gainsboro;
+      }
+      #map {
+        width:800px;
+        height: 600px;
+        margin:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+        function initMap(){
+        /* To get Coords, goto Google Maps, find your location, right-click, and get Lat, Long */
+        
+         var mapOptions = {
+        center: new google.maps.LatLng(51.04660498514594, -114.08820069316744),
+        zoom: 15,/* can go from 0 - 21 (depending on the location. Higher population areas can get more resolution*/
+        mapTypeId: google.maps.MapTypeId.ROADMAP /* ROADMAP, HYBRID, TERRAIN, SATELLITE*/
+        
+         };
+        
+         
+         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var calDowntownCoords = [
+                new google.maps.latLng(51.0450, -114.0870),
+                new google.maps.latLng(51.0470, -114.0860),
+                new google.maps.latLng(51.0490, -114.0850),
+                new google.maps.latLng(51.0510, -114.0840),
+                new google.maps.latLng(51.0450, -114.0880),
+            ];
+
+            calDowntown = new google.maps.Polygon({
+
+                paths: calDowntownCoords,
+                strokeColor: "#ff0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: "#ff0000",
+                fillOpacity: 0.35
+            });
+
+            calDowntown.setMap(map);
+
+        };
+
+        
+        
+    </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script> -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCm9vBHasbRw4NW9SSFFeEGVNR1LTNJ2fI&callback=initMap"></script>
+  </body>
+</html>
